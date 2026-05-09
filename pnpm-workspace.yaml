@@ -1,0 +1,21 @@
+packages:
+  - "apps/*"
+  - "libraries/*"
+  - "packages/tiktok-live-printer/*"
+
+catalog:
+  "@eulerstream/euler-websocket-sdk": ^1.1.0
+  "@types/node": ^24.0.0
+  react: ^19.1.0
+  react-dom: ^19.1.0
+  tsdown: ^0.23.5
+  typescript: ^5.9.3
+  vitest: ^3.2.4
+  zod: ^3.25.76
+
+allowBuilds:
+  "@printers/printers": true
+  "@tailwindcss/oxide": true
+  bun: true
+  esbuild: true
+  usb: true
