@@ -42,6 +42,8 @@ The reference output is a 58 mm receipt roll with one entry per gift: the sender
 - Images: `sharp` is out (libvips sibling dylib does not survive `bun --compile`). `jimp@1.6.1` is pure JS for JPEG / PNG. TikTok `urlList` entries usually include a `.jpeg` variant alongside `.webp`; the media helper prefers non-WebP URLs and rewrites `.webp` to `.jpeg` as a fallback. WebP decoding is not shipped in v1.
 - Binary: `bun build --compile` embeds statically-required `.node` addons and `--asset` directories. Bun is not installed on the dev machine; it is added as a root devDependency so `pnpm install` provides it.
 
+- **Verified on 2026-11-04 (Bun 1.4.4, macOS arm64):** `bun build --compile --asset ./web src/main.ts` embeds the `usb` napi addon (`@node-usb/usb-darwin-arm64`) and the asset directory; inside the binary the directory is readable with `node:fs` at `path.join(import.meta.dir, "web")`. Against the POS58, `usb.findDeviceByIds` → `open` → `selectConfiguration(1)` → `claimInterface(0)` → `transferOut(3, bytes)` printed. Both `device.configuration` and `device.configurations` throw `getString error: invalid descriptor` on this printer, so the transport reads the configuration descriptor itself with a standard `GET_DESCRIPTOR` control transfer and picks the first bulk OUT endpoint (`0x03` here, `0x81` is IN).
+
 ## Approaches considered
 
 ### Binary packaging

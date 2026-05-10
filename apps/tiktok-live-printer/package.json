@@ -1,0 +1,9 @@
+{
+  "name": "@tiktok-live-printer/app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "usb": "^3.2.1"
+  }
+}
