@@ -1,0 +1,52 @@
+{
+  "name": "tiktok-live-printer",
+  "version": "0.1.0",
+  "description": "Build TikTok LIVE thermal receipt printers on the Euler Stream WebSocket service",
+  "type": "module",
+  "license": "MIT",
+  "author": "Isaac Kogan",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "prepack": "pnpm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isaackogan/TikTokPrinter.git",
+    "directory": "libraries/tiktok-live-printer"
+  },
+  "homepage": "https://github.com/isaackogan/TikTokPrinter/tree/main/libraries/tiktok-live-printer#readme",
+  "bugs": { "url": "https://github.com/isaackogan/TikTokPrinter/issues" },
+  "keywords": ["tiktok", "tiktok live", "thermal printer", "escpos", "receipt", "eulerstream", "gift printer"],
+  "publishConfig": { "access": "public" },
+  "dependencies": {
+    "@eulerstream/euler-websocket-sdk": "catalog:",
+    "@point-of-sale/receipt-printer-encoder": "^4.0.1",
+    "eventemitter3": "^5.0.1",
+    "jimp": "^1.6.1",
+    "usb": "^3.2.1"
+  },
+  "optionalDependencies": {
+    "@printers/printers": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}
