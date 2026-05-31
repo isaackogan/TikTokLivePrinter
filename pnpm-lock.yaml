@@ -66,6 +66,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 24.19.2
+      '@types/w3c-web-usb':
+        specifier: ^1.0.14
+        version: 1.0.14
       tsdown:
         specifier: 'catalog:'
         version: 0.23.5(typescript@5.9.3)

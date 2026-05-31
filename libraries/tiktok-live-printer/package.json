@@ -7,7 +7,9 @@
   "author": "Isaac Kogan",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "source": "./src/index.ts",
@@ -15,7 +17,9 @@
       "import": "./dist/index.js"
     }
   },
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",
@@ -30,9 +34,21 @@
     "directory": "libraries/tiktok-live-printer"
   },
   "homepage": "https://github.com/isaackogan/TikTokPrinter/tree/main/libraries/tiktok-live-printer#readme",
-  "bugs": { "url": "https://github.com/isaackogan/TikTokPrinter/issues" },
-  "keywords": ["tiktok", "tiktok live", "thermal printer", "escpos", "receipt", "eulerstream", "gift printer"],
-  "publishConfig": { "access": "public" },
+  "bugs": {
+    "url": "https://github.com/isaackogan/TikTokPrinter/issues"
+  },
+  "keywords": [
+    "tiktok",
+    "tiktok live",
+    "thermal printer",
+    "escpos",
+    "receipt",
+    "eulerstream",
+    "gift printer"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@eulerstream/euler-websocket-sdk": "catalog:",
     "@point-of-sale/receipt-printer-encoder": "^4.0.1",
@@ -45,6 +61,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "@types/w3c-web-usb": "^1.0.14",
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
