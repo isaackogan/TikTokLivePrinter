@@ -5,3 +5,5 @@ export * from "./media.ts";
 export * from "./events.ts";
 export * from "./voice.ts";
 export * from "./sound.ts";
+export * from "./client.ts";
+export * from "./webcast.ts";

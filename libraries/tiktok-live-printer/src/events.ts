@@ -1,4 +1,4 @@
-import type { MemberMessageAction, WebcastGiftMessage, type WebcastMemberMessage, type WebcastSocialMessage } from "@eulerstream/euler-websocket-sdk/v3";
+import type { MemberMessageAction, WebcastGiftMessage, WebcastMemberMessage, WebcastSocialMessage } from "@eulerstream/euler-websocket-sdk/v3";
 
 const STREAKABLE = 1;
 // The schema package ships enums as types only, so the value is spelled out here.
