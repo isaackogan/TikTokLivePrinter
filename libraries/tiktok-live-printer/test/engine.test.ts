@@ -55,3 +55,13 @@ describe("PrinterEngine", () => {
     expect(transport.chunks.length).toBe(1);
   });
 });
+
+describe("PrinterEngine image lightness", () => {
+  it("applies the gamma lift so a mid-grey image dithers lighter than with gamma 1", () => {
+    const grey: RgbaImage = { width: 64, height: 8, data: new Uint8ClampedArray(64 * 8 * 4).fill(96).map((v, i) => (i % 4 === 3 ? 255 : v)) };
+    const dark = new PrinterEngine(new MemoryTransport(), { imageGamma: 1 }).encode([Image(grey)]);
+    const lifted = new PrinterEngine(new MemoryTransport()).encode([Image(grey)]);
+    const ones = (bytes: Uint8Array) => [...bytes].reduce((n, b) => n + ((b >>> 0).toString(2).match(/1/g)?.length ?? 0), 0);
+    expect(ones(lifted)).toBeLessThan(ones(dark));
+  });
+});

@@ -1,4 +1,5 @@
 import ReceiptPrinterEncoder from "@point-of-sale/receipt-printer-encoder";
+import { lighten } from "../image.ts";
 import type { PrintItem, TextStyle } from "../items.ts";
 import { ConsoleTransport } from "./console.ts";
 import { NetworkTransport } from "./network.ts";
@@ -7,19 +8,23 @@ import type { Transport } from "./transport.ts";
 import { UsbTransport } from "./usb.ts";
 
 export type PaperWidth = 384 | 576;
-export type EngineOptions = { width?: PaperWidth };
+/** `imageGamma` above 1 lifts midtones before dithering; 1 prints images as they are. */
+export type EngineOptions = { width?: PaperWidth; imageGamma?: number };
 
 const DOTS_PER_COLUMN = 12;
+const DEFAULT_IMAGE_GAMMA = 1.6;
 
 /** Encodes print items to ESC/POS and sends each job to a transport in one write. */
 export class PrinterEngine {
   readonly width: PaperWidth;
+  readonly imageGamma: number;
 
   constructor(
     private readonly transport: Transport,
     opts: EngineOptions = {},
   ) {
     this.width = opts.width ?? 384;
+    this.imageGamma = opts.imageGamma ?? DEFAULT_IMAGE_GAMMA;
   }
 
   static usb(opts: { vendorId?: number; productId?: number } & EngineOptions = {}): PrinterEngine {
@@ -63,7 +68,7 @@ export class PrinterEngine {
         return this.encodeText(encoder, item.content, item.style);
       case "image": {
         const width = Math.floor(Math.min(item.width ?? this.width, this.width) / 8) * 8;
-        encoder.align("center").image(item.image, { width, algorithm: "atkinson" }).align("left");
+        encoder.align("center").image(lighten(item.image, this.imageGamma), { width, algorithm: "atkinson" }).align("left");
         return;
       }
       case "line":
