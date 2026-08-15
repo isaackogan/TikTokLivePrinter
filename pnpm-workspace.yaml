@@ -19,3 +19,6 @@ allowBuilds:
   bun: true
   esbuild: true
   usb: true
+
+minimumReleaseAgeExclude:
+  - lucide-react@1.68.0
