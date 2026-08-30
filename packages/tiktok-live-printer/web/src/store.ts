@@ -50,3 +50,11 @@ export function useConfig(): [Config, (update: (c: Config) => Config) => void] {
   const config = useSyncExternalStore(subscribe, get, get);
   return [config, (update) => setConfig(update(get()))];
 }
+
+/** Imports a JSON file's text. Returns the error to show, or undefined when the config was replaced. */
+export function applyImport(text: string): string | undefined {
+  const result = importConfig(text);
+  if (!result.ok) return result.error;
+  setConfig(result.config);
+  return undefined;
+}

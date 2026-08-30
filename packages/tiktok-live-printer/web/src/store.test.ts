@@ -1,6 +1,6 @@
 import { defaultConfig } from "@tiktok-live-printer/config";
 import { beforeEach, describe, expect, it } from "vitest";
-import { STORAGE_KEY, exportConfig, importConfig, loadConfig } from "./store.ts";
+import { STORAGE_KEY, applyImport, exportConfig, importConfig, loadConfig, setConfig } from "./store.ts";
 
 describe("importConfig", () => {
   it("rejects invalid JSON with a message", () => {
@@ -31,5 +31,21 @@ describe("loadConfig", () => {
     const config = { ...defaultConfig(), uniqueId: "stored" };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
     expect(loadConfig()).toEqual(config);
+  });
+});
+
+describe("applyImport", () => {
+  beforeEach(() => localStorage.clear());
+
+  it("returns an error and leaves the current config alone for a bad file", () => {
+    setConfig({ ...defaultConfig(), uniqueId: "keep-me" });
+    const error = applyImport('{"version":1}');
+    expect(error).toMatch(/uniqueId|printer|triggers/);
+    expect(loadConfig().uniqueId).toBe("keep-me");
+  });
+
+  it("replaces the config for a good file", () => {
+    expect(applyImport(exportConfig({ ...defaultConfig(), uniqueId: "imported" }))).toBeUndefined();
+    expect(loadConfig().uniqueId).toBe("imported");
   });
 });
