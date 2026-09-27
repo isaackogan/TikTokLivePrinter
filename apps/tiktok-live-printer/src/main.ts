@@ -1,4 +1,5 @@
 import path from "node:path";
+import { configureNativeModules } from "./native.ts";
 import { openBrowser } from "./open-browser.ts";
 import { createServer } from "./server.ts";
 
@@ -17,6 +18,7 @@ function listen() {
   throw new Error(`No free port between ${FIRST_PORT} and ${FIRST_PORT + PORT_ATTEMPTS - 1}`);
 }
 
+configureNativeModules();
 const server = listen();
 const url = `http://127.0.0.1:${server.port}`;
 console.log(`TikTok Live Printer is running at ${url}`);
