@@ -9,7 +9,7 @@ const root = path.resolve(import.meta.dir, "..");
 const src = path.join(root, "src");
 const webDist = path.resolve(root, "../../packages/tiktok-live-printer/web/dist");
 
-const targetArg = process.argv.find((a) => a.startsWith("--target="))?.slice("--target=".length);
+const targetArg = process.argv.find((a) => a.startsWith("--target="))?.slice("--target=".length) ?? process.env.BUILD_TARGET;
 const platform = targetArg?.split("-")[0] ?? (process.platform === "win32" ? "windows" : process.platform);
 const arch = targetArg?.split("-")[1] ?? (process.arch === "x64" ? "x64" : "arm64");
 const target = `${platform}-${arch}`;

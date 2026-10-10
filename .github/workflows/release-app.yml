@@ -1,0 +1,73 @@
+name: "Release: Build app binaries"
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version, e.g. 0.1.0"
+        required: true
+  push:
+    tags: ["app-v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            target: darwin-arm64
+          - os: macos-15-intel
+            target: darwin-x64
+          - os: windows-latest
+            target: windows-x64
+          - os: ubuntu-latest
+            target: linux-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec turbo build --filter=@tiktok-live-printer/app
+        env:
+          BUILD_TARGET: ${{ matrix.target }}
+
+      - name: Ad-hoc sign (macOS)
+        if: runner.os == 'macOS'
+        run: codesign --sign - apps/tiktok-live-printer/dist/tiktok-live-printer-${{ matrix.target }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tiktok-live-printer-${{ matrix.target }}
+          path: apps/tiktok-live-printer/dist/tiktok-live-printer-${{ matrix.target }}*
+          if-no-files-found: error
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: binaries
+          merge-multiple: true
+      - name: Drop source maps
+        run: rm -f binaries/*.map
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.version && format('app-v{0}', github.event.inputs.version) || github.ref_name }}
+          name: TikTok Live Printer ${{ github.event.inputs.version || github.ref_name }}
+          files: binaries/*
+          generate_release_notes: true
