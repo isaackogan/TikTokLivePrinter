@@ -1,6 +1,6 @@
 {
   "name": "tiktok-live-printer",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Build TikTok LIVE thermal receipt printers on the Euler Stream WebSocket service",
   "type": "module",
   "license": "MIT",
