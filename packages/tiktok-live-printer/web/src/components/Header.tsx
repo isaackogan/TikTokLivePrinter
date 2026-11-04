@@ -1,5 +1,6 @@
 import { Download, Upload } from "lucide-react";
 import { type ChangeEvent, useRef, useState } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { applyImport, exportConfig, useConfig } from "@/store";
 
@@ -36,6 +37,7 @@ export function Header() {
         <Button variant="outline" onClick={download}>
           <Download /> Export
         </Button>
+        <ThemeToggle />
       </div>
     </header>
   );

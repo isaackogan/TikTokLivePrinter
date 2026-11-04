@@ -17,6 +17,7 @@ beforeEach(() => {
   localStorage.clear();
   vi.stubGlobal("fetch", vi.fn(async () => new Response(JSON.stringify({ usb: [], spooler: [] }), { status: 200 })));
   vi.stubGlobal("WebSocket", FakeSocket);
+  vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: false })));
   host = document.body.appendChild(document.createElement("div"));
   root = createRoot(host);
 });
