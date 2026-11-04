@@ -32,10 +32,10 @@ export default defineConfig({
         { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
       ],
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/isaackogan/TikTokPrinter' },
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/isaackogan/TikTokLivePrinter' },
         { icon: 'npm', label: 'npm', href: 'https://www.npmjs.com/package/tiktok-live-printer' },
       ],
-      editLink: { baseUrl: 'https://github.com/isaackogan/TikTokPrinter/edit/main/docs/' },
+      editLink: { baseUrl: 'https://github.com/isaackogan/TikTokLivePrinter/edit/main/docs/' },
       sidebar: [
         { label: 'Start here', items: [{ label: 'Overview', slug: '' }] },
         { label: 'App (no-code)', items: [{ autogenerate: { directory: 'app' } }] },
@@ -48,7 +48,7 @@ export default defineConfig({
             { label: 'App', link: `${base}app/install/` },
             { label: 'Library', link: `${base}library/getting-started/` },
           ],
-          footerText: 'Unofficial project, not affiliated with TikTok or ByteDance Ltd. LIVE events by the [Euler Stream](https://www.eulerstream.com/) WebSocket API. Source on [GitHub](https://github.com/isaackogan/TikTokPrinter).',
+          footerText: 'Unofficial project, not affiliated with TikTok or ByteDance Ltd. LIVE events by the [Euler Stream](https://www.eulerstream.com/) WebSocket API. Source on [GitHub](https://github.com/isaackogan/TikTokLivePrinter).',
         }),
         starlightLinksValidator(),
       ],

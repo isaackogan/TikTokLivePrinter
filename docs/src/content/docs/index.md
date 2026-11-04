@@ -33,4 +33,4 @@ Any ESC/POS thermal receipt printer: 58 mm (384 dots) and 80 mm (576 dots) rolls
 
 ## Community and support
 
-Source, issues and releases live on [GitHub](https://github.com/isaackogan/TikTokPrinter). Questions about the WebSocket service go to [Euler Stream support](https://www.eulerstream.com/discord). This is an unofficial project and is not affiliated with TikTok or ByteDance.
+Source, issues and releases live on [GitHub](https://github.com/isaackogan/TikTokLivePrinter). Questions about the WebSocket service go to [Euler Stream support](https://www.eulerstream.com/discord). This is an unofficial project and is not affiliated with TikTok or ByteDance.

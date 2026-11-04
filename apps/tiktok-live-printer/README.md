@@ -4,7 +4,7 @@ A no-code gift printer. Download one file, run it, and your browser opens a page
 
 ## Install
 
-1. Download the binary for your computer from the [latest release](https://github.com/isaackogan/TikTokPrinter/releases): `darwin-arm64` (Apple Silicon Mac), `darwin-x64` (Intel Mac), `windows-x64`, or `linux-x64`.
+1. Download the binary for your computer from the [latest release](https://github.com/isaackogan/TikTokLivePrinter/releases): `darwin-arm64` (Apple Silicon Mac), `darwin-x64` (Intel Mac), `windows-x64`, or `linux-x64`.
 2. Run it. It starts a local server on `http://127.0.0.1:7474` and opens your browser. Nothing leaves your machine except the connection to Euler Stream.
 3. Plug in the printer.
 

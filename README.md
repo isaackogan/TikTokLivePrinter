@@ -8,9 +8,9 @@ Full documentation for the app and the library is at [ttlp.docs.isaackogan.com](
 
 [![tiktok-live-printer on npm](https://img.shields.io/npm/v/tiktok-live-printer?logo=npm&label=tiktok-live-printer)](https://www.npmjs.com/package/tiktok-live-printer)
 ![Live TikTok LIVE API connections](https://api.eulerstream.com/analytics/pips)
-![TikTokPrinter GitHub stars](https://img.shields.io/github/stars/isaackogan/TikTokPrinter?style=flat&color=0274b5)
-![TikTokPrinter GitHub forks](https://img.shields.io/github/forks/isaackogan/TikTokPrinter?style=flat&color=0274b5)
-![TikTokPrinter open issues](https://img.shields.io/github/issues/isaackogan/TikTokPrinter)
+![TikTokPrinter GitHub stars](https://img.shields.io/github/stars/isaackogan/TikTokLivePrinter?style=flat&color=0274b5)
+![TikTokPrinter GitHub forks](https://img.shields.io/github/forks/isaackogan/TikTokLivePrinter?style=flat&color=0274b5)
+![TikTokPrinter open issues](https://img.shields.io/github/issues/isaackogan/TikTokLivePrinter)
 
 > **Note:** This is an unofficial project, not affiliated with TikTok or ByteDance. LIVE events are delivered by the production [WebSocket API](https://www.eulerstream.com/websockets) from [Euler Stream](https://www.eulerstream.com/); an Euler Stream API key is required.
 
@@ -53,7 +53,7 @@ Full documentation for the app and the library is at [ttlp.docs.isaackogan.com](
 
 ## The App (No Code)
 
-1. Download the file for your computer from the [latest release](https://github.com/isaackogan/TikTokPrinter/releases): `darwin-arm64` (Apple Silicon Mac), `darwin-x64` (Intel Mac), `windows-x64` or `linux-x64`.
+1. Download the file for your computer from the [latest release](https://github.com/isaackogan/TikTokLivePrinter/releases): `darwin-arm64` (Apple Silicon Mac), `darwin-x64` (Intel Mac), `windows-x64` or `linux-x64`.
 2. Run it. It starts a local server at `http://127.0.0.1:7474` and opens the page in your browser. Nothing leaves your machine except the connection to Euler Stream.
 3. Enter the creator's TikTok username and your [Euler Stream API key](https://www.eulerstream.com/), pick the printer, click **Test print**.
 4. Build receipts by dragging blocks (avatar, gift image, text with `{username}`, `{gift}`, `{count}` placeholders, line, blank lines, cut, voice) and click **Start printing**.
@@ -156,7 +156,7 @@ Any ESC/POS thermal receipt printer (POS58-style 58 mm USB printers, 80 mm kitch
 | `@tiktok-live-printer/config`, `@tiktok-live-printer/web` | [`packages/tiktok-live-printer`](packages/tiktok-live-printer) | Shared config schema and the React UI |
 | Documentation site | [`docs`](docs) | Astro Starlight, deployed to [ttlp.docs.isaackogan.com](https://ttlp.docs.isaackogan.com/) |
 
-The original Python library is archived on the [`legacy/archived-python-library`](https://github.com/isaackogan/TikTokPrinter/tree/legacy/archived-python-library) branch.
+The original Python library is archived on the [`legacy/archived-python-library`](https://github.com/isaackogan/TikTokLivePrinter/tree/legacy/archived-python-library) branch.
 
 ## Development
 
@@ -205,4 +205,4 @@ MIT. See [LICENSE](LICENSE).
 
 * **Isaac Kogan** - *Creator and maintainer* - [isaackogan](https://github.com/isaackogan)
 
-See also the full list of [contributors](https://github.com/isaackogan/TikTokPrinter/contributors).
+See also the full list of [contributors](https://github.com/isaackogan/TikTokLivePrinter/contributors).

@@ -32,12 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/isaackogan/TikTokPrinter.git",
+    "url": "git+https://github.com/isaackogan/TikTokLivePrinter.git",
     "directory": "libraries/tiktok-live-printer"
   },
-  "homepage": "https://github.com/isaackogan/TikTokPrinter/tree/main/libraries/tiktok-live-printer#readme",
+  "homepage": "https://github.com/isaackogan/TikTokLivePrinter/tree/main/libraries/tiktok-live-printer#readme",
   "bugs": {
-    "url": "https://github.com/isaackogan/TikTokPrinter/issues"
+    "url": "https://github.com/isaackogan/TikTokLivePrinter/issues"
   },
   "keywords": [
     "tiktok",

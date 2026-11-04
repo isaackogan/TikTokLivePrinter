@@ -9,7 +9,7 @@ The app is a single file. It starts a small server on your computer and opens a 
 
 ## Download
 
-Get the file for your computer from the [latest GitHub release](https://github.com/isaackogan/TikTokPrinter/releases):
+Get the file for your computer from the [latest GitHub release](https://github.com/isaackogan/TikTokLivePrinter/releases):
 
 | File | Computer |
 | --- | --- |
