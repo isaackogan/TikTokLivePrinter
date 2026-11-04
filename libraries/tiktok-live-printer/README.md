@@ -92,4 +92,4 @@ Helpers: `isGiftComplete(msg)` (true once a streak has finished), `giftTotal(msg
 
 ## License
 
-MIT
+Modified MIT: the standard MIT grant with an Excluded Party Restriction covering tik.tools and its owners, operators and affiliates. See [LICENSE](LICENSE).

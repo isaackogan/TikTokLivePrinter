@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Build TikTok LIVE thermal receipt printers on the Euler Stream WebSocket service",
   "type": "module",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "author": "Isaac Kogan",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

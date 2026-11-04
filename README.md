@@ -187,7 +187,7 @@ Any ESC/POS receipt printer. The inexpensive 58 mm USB models sold as POS58 work
 
 ### Is it free?
 
-The app and library are free and open source under the MIT license. LIVE events come from [Euler Stream](https://www.eulerstream.com/), which requires an API key; see their site for plans.
+The app and library are free to use and modify under a modified MIT license; the only exception is that tik.tools and its owners and operators are excluded from the license. LIVE events come from [Euler Stream](https://www.eulerstream.com/), which requires an API key; see their site for plans.
 
 ### Does it work on Windows?
 
@@ -199,7 +199,7 @@ Yes. Receipts exist for gifts, follows, shares, likes (every N likes), comments,
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+This project is licensed under a modified MIT license: the standard MIT grant with an Excluded Party Restriction that denies all permissions to tik.tools and to its owners, operators and affiliates. See [LICENSE](LICENSE) for the full text.
 
 ## Contributors
 

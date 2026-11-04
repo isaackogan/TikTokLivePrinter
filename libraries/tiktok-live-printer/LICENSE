@@ -1,4 +1,5 @@
-MIT License
+TikTok Live Printer License
+(MIT License with an Excluded Party Restriction)
 
 Copyright (c) 2026 Isaac Kogan
 
@@ -9,8 +10,30 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. The above copyright notice and this permission notice (including the
+   Excluded Party Restriction below) shall be included in all copies or
+   substantial portions of the Software.
+
+2. Excluded Party Restriction. Notwithstanding anything above, no permission
+   of any kind is granted to, and the Software may not be used, copied,
+   modified, merged, published, distributed, sublicensed, sold, or otherwise
+   dealt in by, any of the following (together, the "Excluded Parties"):
+
+   (a) tik.tools, meaning any website, service, product, application,
+       business, or project operated under the name "tik.tools" or the
+       domain tik.tools, or any successor name or domain;
+
+   (b) any person or entity that owns, controls, operates, manages, funds,
+       or is employed or engaged by tik.tools, directly or indirectly; and
+
+   (c) any parent, subsidiary, affiliate, agent, contractor, successor, or
+       assign of anyone described in (a) or (b), when acting for or on
+       behalf of tik.tools.
+
+   Any use of the Software by an Excluded Party is unlicensed and is not
+   authorized by the copyright holder. An Excluded Party may not obtain the
+   permissions above indirectly, including by receiving a copy from a
+   licensee or by contributing to, forking, or redistributing the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
