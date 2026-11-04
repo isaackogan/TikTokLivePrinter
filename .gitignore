@@ -6,4 +6,5 @@ dist/
 .DS_Store
 .env
 .superpowers/
-docs/
+docs/superpowers/
+.astro/

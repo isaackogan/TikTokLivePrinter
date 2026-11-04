@@ -1,0 +1,25 @@
+{
+  "name": "tiktok-live-printer-docs",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.5.2",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "verify": "python3 scripts/verify_seo.py dist",
+    "preview": "astro preview --host 127.0.0.1",
+    "deploy:cloudflare": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@astrojs/markdown-remark": "7.3.5",
+    "@astrojs/starlight": "0.42.9",
+    "astro": "7.4.5",
+    "lucode-starlight": "1.0.0",
+    "starlight-links-validator": "0.27.0",
+    "unist-util-visit": "5.2.0",
+    "wrangler": "4.157.0"
+  }
+}
