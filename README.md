@@ -28,7 +28,7 @@ Node 22+, pnpm 11. Bun is installed as a dev dependency and only needed by the a
 
 ## Releasing
 
-- **Library to npm:** run the "Release: Publish tiktok-live-printer" workflow from `main` with a version bump. Needs an `NPM_TOKEN` repository secret with publish rights.
+- **Library to npm:** run the "Release: Publish tiktok-live-printer" workflow from `main` with a version bump. It uses npm trusted publishing (GitHub OIDC), so no token is stored: the package on npmjs.com must list `isaackogan/TikTokPrinter` with workflow `release-tiktok-live-printer.yml` as a trusted publisher.
 - **App binaries:** run the "Release: Build app binaries" workflow with a version, or push an `app-v*` tag. Each OS builds its own binary and they are attached to a GitHub Release. macOS binaries are ad-hoc signed; users may need to right-click → Open the first time.
 
 ## Platform notes

@@ -1,5 +1,8 @@
 name: "Release: Publish tiktok-live-printer"
 
+# Publishes with npm trusted publishing (OIDC): no npm token is stored in this repo.
+# The package on npmjs.com must list this repository and workflow file as a trusted publisher.
+
 on:
   workflow_dispatch:
     inputs:
@@ -22,6 +25,7 @@ jobs:
     steps:
       - name: Enforce main branch
         if: github.ref != 'refs/heads/main'
+        working-directory: .
         run: |
           echo "::error::Release must be triggered from main, got ${{ github.ref }}"
           exit 1
@@ -50,10 +54,8 @@ jobs:
       - name: Test and build
         run: pnpm run test && pnpm run build
 
-      - name: Publish to npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm publish --access public --no-git-checks
+      - name: Publish to npm (trusted publishing)
+        run: pnpm publish --access public --no-git-checks --provenance
 
       - name: Commit and tag
         working-directory: .
