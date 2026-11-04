@@ -61,15 +61,21 @@ export async function listUsbPrinters(): Promise<UsbPrinterInfo[]> {
 
 /** Direct USB printing. Works without drivers on macOS and Linux; Windows needs WinUSB, prefer the spooler there. */
 export class UsbTransport implements Transport {
-  private device?: Promise<{ device: UsbDevice; endpoint: number }>;
+  private device?: ReturnType<UsbTransport["open"]>;
 
   constructor(private readonly opts: { vendorId?: number; productId?: number } = {}) {}
 
   async write(bytes: Uint8Array): Promise<void> {
-    const { device, endpoint } = await (this.device ??= this.open());
+    const { device, endpoint } = await (this.device ??= this.open().catch((err) => {
+      this.device = undefined;
+      throw err;
+    }));
     for (let i = 0; i < bytes.length; i += CHUNK) {
-      const result = await device.transferOut(endpoint, bytes.slice(i, i + CHUNK) as Uint8Array<ArrayBuffer>);
-      if (result.status !== "ok") throw new Error(`USB transfer failed: ${result.status}`);
+      const result = await device.transferOut(endpoint, bytes.slice(i, i + CHUNK) as Uint8Array<ArrayBuffer>).catch((err) => ({ status: String(err) }));
+      if (result.status !== "ok") {
+        await this.close();
+        throw new Error(`USB transfer failed: ${result.status}`);
+      }
     }
   }
 
@@ -81,7 +87,7 @@ export class UsbTransport implements Transport {
     await opened.device.close().catch(() => {});
   }
 
-  private async open() {
+  protected async open(): Promise<{ device: Pick<UsbDevice, "transferOut" | "releaseInterface" | "close">; endpoint: number }> {
     const device = await this.find();
     await device.open();
     await device.selectConfiguration(1);

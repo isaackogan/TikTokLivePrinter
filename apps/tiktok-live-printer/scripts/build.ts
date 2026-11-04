@@ -2,6 +2,7 @@ import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { $ } from "bun";
+import { napiPlatform as napiPlatformFor } from "./platform.ts";
 
 // Builds the single-file app binary. Assets are staged next to the entrypoint so
 // `path.join(import.meta.dir, ...)` resolves the same way in dev and inside the binary.
@@ -21,7 +22,7 @@ cpSync(webDist, path.join(src, "web"), { recursive: true });
 
 // The spooler package resolves its addon with a dynamic import Bun cannot bundle, so the
 // addon is embedded as an asset and pointed at with setNativeModulePath() at startup.
-const napiPlatform = `${platform === "windows" ? "win32" : platform}-${arch}${platform === "windows" ? "-msvc" : ""}`;
+const napiPlatform = napiPlatformFor(platform, arch);
 const spoolerPackage = `@printers/printers-${napiPlatform}`;
 const spoolerRequire = createRequire(createRequire(import.meta.url).resolve("@printers/printers"));
 mkdirSync(path.join(src, "native"));

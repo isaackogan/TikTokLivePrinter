@@ -18,4 +18,5 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec turbo typecheck test build --filter=!@tiktok-live-printer/app
+      - run: pnpm exec turbo typecheck test
+      - run: pnpm exec turbo build --filter=!@tiktok-live-printer/app

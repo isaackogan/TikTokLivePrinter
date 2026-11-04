@@ -10,7 +10,7 @@ export function isGiftComplete(msg: WebcastGiftMessage): boolean {
 }
 
 export function giftTotal(msg: WebcastGiftMessage): number {
-  return Math.max(msg.repeatCount, 1);
+  return msg.repeatCount || 1;
 }
 
 export function giftDiamonds(msg: WebcastGiftMessage): number {
@@ -24,6 +24,6 @@ export function isJoin(msg: WebcastMemberMessage): boolean {
 export function socialKind(msg: WebcastSocialMessage): "follow" | "share" | undefined {
   const key = msg.common?.displayText?.key ?? "";
   if (msg.followType > 0 || key.includes("follow")) return "follow";
-  if (msg.shareType !== "" || key.includes("share")) return "share";
+  if (msg.shareType || key.includes("share")) return "share";
   return undefined;
 }

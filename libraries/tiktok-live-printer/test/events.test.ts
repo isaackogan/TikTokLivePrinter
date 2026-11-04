@@ -47,3 +47,13 @@ describe("member and social helpers", () => {
     expect(socialKind(social({}))).toBeUndefined();
   });
 });
+
+describe("omitted fields", () => {
+  it("giftTotal treats a missing repeatCount as one", () => {
+    expect(giftTotal({ gift: { type: 1, diamondCount: 1 } } as never)).toBe(1);
+  });
+
+  it("socialKind is undefined when shareType and followType are omitted", () => {
+    expect(socialKind({ common: {} } as never)).toBeUndefined();
+  });
+});

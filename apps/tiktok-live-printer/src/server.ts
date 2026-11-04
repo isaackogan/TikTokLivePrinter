@@ -1,4 +1,5 @@
 import { parseConfig } from "@tiktok-live-printer/config";
+import { isAllowedOrigin } from "./origin.ts";
 import { listPrinters, testPrint } from "./printers.ts";
 import { Session, type SessionStatus } from "./session/session.ts";
 import { serveStatic } from "./static.ts";
@@ -21,6 +22,7 @@ export function createServer(opts: { port: number; staticDir: string }) {
   const json = (data: unknown, init: ResponseInit = {}) => Response.json(data ?? null, init);
   const fail = (err: unknown) => json({ error: err instanceof Error ? err.message : String(err) }, { status: 400 });
   const readConfig = async (req: Request) => {
+    if (!isAllowedOrigin(req.headers.get("origin"), opts.port)) throw new Error("Cross-origin request refused");
     const result = parseConfig(((await req.json()) as { config?: unknown }).config);
     if (!result.ok) throw new Error(result.error);
     return result.config;
@@ -48,13 +50,17 @@ export function createServer(opts: { port: number; staticDir: string }) {
         },
       },
       "/api/session/stop": {
-        POST: async () => {
+        POST: async (req) => {
+          if (!isAllowedOrigin(req.headers.get("origin"), opts.port)) return fail(new Error("Cross-origin request refused"));
           await session?.stop();
           session = undefined;
           return json(status);
         },
       },
-      "/api/events": (req, server) => (server.upgrade(req) ? undefined : new Response("WebSocket expected", { status: 426 })),
+      "/api/events": (req, server) => {
+        if (!isAllowedOrigin(req.headers.get("origin"), opts.port)) return new Response("Cross-origin request refused", { status: 403 });
+        return server.upgrade(req) ? undefined : new Response("WebSocket expected", { status: 426 });
+      },
     },
     fetch: serveSpa,
     websocket: {
